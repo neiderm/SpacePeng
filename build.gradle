@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:1.0.0"
@@ -12,7 +11,7 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    version = '1.0'
+    version = '1.58-1'
     ext {
         appName = 'SpacePeng'
         gdxVersion = '1.5.5'
@@ -24,8 +23,6 @@ allprojects {
 
     repositories {
         mavenCentral()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
 }
 
@@ -34,8 +31,10 @@ project(":desktop") {
 
     dependencies {
         compile project(":core")
+        // libgdx (https://github.com/libgdx/libgdx)
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        // libgdx controllers extension
         compile "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
     }
@@ -48,12 +47,15 @@ project(":android") {
 
     dependencies {
         compile project(":core")
+        // libgdx (https://github.com/libgdx/libgdx)
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+        // libgdx controllers extension
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
+        // universal tween engine (https://code.google.com/p/java-universal-tween-engine)
         compile fileTree(dir: '../libs', include: '*.jar')
     }
 }
@@ -62,9 +64,13 @@ project(":core") {
     apply plugin: "java"
 
     dependencies {
+        // libgdx (https://github.com/libgdx/libgdx)
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        // libgdx controllers extension
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
+        // artemis-odb entity component system (https://github.com/junkdog/artemis-odb)
         compile "net.onedaybeard.artemis:artemis-odb:0.9.0"
+        // universal tween engine (https://code.google.com/p/java-universal-tween-engine)
         compile fileTree(dir: '../libs', include: '*.jar')
     }
 }
