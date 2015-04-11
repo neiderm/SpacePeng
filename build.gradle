@@ -55,8 +55,6 @@ project(":android") {
         // libgdx controllers extension
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
-        // universal tween engine (https://code.google.com/p/java-universal-tween-engine)
-        compile fileTree(dir: '../libs', include: '*.jar')
     }
 }
 
@@ -70,8 +68,6 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         // artemis-odb entity component system (https://github.com/junkdog/artemis-odb)
         compile "net.onedaybeard.artemis:artemis-odb:0.9.0"
-        // universal tween engine (https://code.google.com/p/java-universal-tween-engine)
-        compile fileTree(dir: '../libs', include: '*.jar')
     }
 }
 
